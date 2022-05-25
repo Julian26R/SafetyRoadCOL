@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "442680058279",
+    "project_id": "safetyroadcol",
+    "storage_bucket": "safetyroadcol.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:442680058279:android:3d7ca968372507acdf5682",
+        "android_client_info": {
+          "package_name": "com.ean.safetyroadcol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "442680058279-07q629g4d78rmv0vaa544s8plvu96gur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARF01tW02hECP3vMuIf3TOM7OLTx6ggxw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "442680058279-07q629g4d78rmv0vaa544s8plvu96gur.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
