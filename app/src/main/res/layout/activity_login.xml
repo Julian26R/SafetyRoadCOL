@@ -18,6 +18,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LOGIN"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
         <EditText
             android:id="@+id/ed_usuario_log"
             android:layout_width="match_parent"
