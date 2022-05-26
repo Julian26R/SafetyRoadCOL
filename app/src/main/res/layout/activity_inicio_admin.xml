@@ -50,5 +50,11 @@
                 android:layout_weight="1"
                 android:text="registrar usuario" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/BtnCerrarSesion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cerrar Sesión " />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

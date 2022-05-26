@@ -9,20 +9,37 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class InicioUser : AppCompatActivity() {
+    private lateinit var auth: FirebaseAuth;
     override fun onCreate(savedInstanceState: Bundle?) {
+
         val db = Firebase.firestore
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio_user)
+
+        auth = Firebase.auth
+
         val usuario:String = intent.getStringExtra("USUARIO").toString()
         val perfil:String = intent.getStringExtra("PERFIL").toString()
         val btn_estado=findViewById<Button>(R.id.btn_estado_user)
         val imagen=findViewById<ImageView>(R.id.im_user_user)
         val mensaje=findViewById<TextView>(R.id.tv_asignado_user)
             var texto=""
+
+        val boton_cerrarsesion = findViewById<Button>(R.id.brn_volver_user)
+        boton_cerrarsesion.setOnClickListener{
+            auth.signOut()
+            if (auth.currentUser==null){
+                val intent = Intent(this,MainActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
         val docRef = db.collection("Vehiculo")
             .get()
             .addOnSuccessListener { documentos ->
