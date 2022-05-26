@@ -33,5 +33,11 @@ class InicioAdmin : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+
+        val boton_registrarvehiculo = findViewById<Button>(R.id.BtnRegistrarVehiculo)
+        boton_registrarvehiculo.setOnClickListener{
+            val intent = Intent(this,RegistrarVehiculo::class.java)
+            startActivity(intent)
+        }
     }
 }

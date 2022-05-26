@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrarVehiculo">
+
+    <LinearLayout
+        android:layout_width="399dp"
+        android:layout_height="720dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Nuevo Vehiculo"
+            android:textSize="34sp" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Placa del Vehiculo"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/EdTxtPlaca"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Placa"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Marca del Vehiculo"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/EdTxtMarca"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Marca"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Modelo del Vehiculo"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/EdTxtModelo"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Modelo"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Color del Vehiculo"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/EdTxtColor"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Color"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Línea del Vehiculo"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/EdTxtLinea"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Línea"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Clase del Vehiculo"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/SpClase"
+            android:layout_width="match_parent"
+            android:layout_height="47dp" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cilindraje del Vehiculo"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/EdTxtCilindraje"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Cilindraje"
+            android:inputType="number" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="71dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/BtnRegistrarVehiculoNuevo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Registrar" />
+
+            <Button
+                android:id="@+id/BtnVolverVehiculo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Volver" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
