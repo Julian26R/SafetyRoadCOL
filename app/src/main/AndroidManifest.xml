@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SafetyRoadCOL">
         <activity
+            android:name=".RegistroInspeccion"
+            android:exported="false" />
+        <activity
             android:name=".RegistrarVehiculo"
             android:exported="false" />
         <activity
@@ -20,9 +23,6 @@
             android:exported="false" />
         <activity
             android:name=".InicioAdmin"
-            android:exported="false" />
-        <activity
-            android:name=".Direccionador"
             android:exported="false" />
         <activity
             android:name=".Login"

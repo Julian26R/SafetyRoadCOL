@@ -44,42 +44,51 @@ class InicioUser : AppCompatActivity() {
             progress.visibility=View.INVISIBLE
             startActivity(intent)
         }
-        val docRef1 = db.collection("Inspeccion")
-        docRef1.get()
-            .addOnSuccessListener { document ->
-                for (doc in document){
-                    if(doc.id==inspeccion){
-                        textoestado.text = "Informacion Diligenciada!!"
-                        btn_estado.visibility = View.INVISIBLE
-                    }
-                }
 
-                if(textoestado.text==""){
-                    textoestado.text="Pendiente por diligenciar"
-                    btn_estado.visibility=View.VISIBLE
-                }
-            }
-            .addOnFailureListener { exception ->
-                textoestado.text="Pendiente por diligenciar"
-                btn_estado.visibility=View.VISIBLE
-            }
         val docRef = db.collection("Vehiculo")
             .get()
             .addOnSuccessListener { documentos ->
                 for (document in documentos){
                     val placa=document.id
+                    btn_estado.setOnClickListener {
+                        val intent= Intent(this,RegistroInspeccion::class.java)
+                        intent.putExtra("PLACA","$placa")
+                        intent.putExtra("USUARIO","$usuario")
+                        startActivity(intent)
+                    }
                     val asignadoA=document.get("asignadoA")
                     val fechaAsignacion=document.get("fechaAsignacion")
                     if(asignadoA==usuario){
-                        texto="Asignado el vehiculo $placa $inspeccion"
+                        texto="Asignado el vehiculo $placa "
+                        val docRef1 = db.collection("Inspeccion")
+                        docRef1.get()
+                            .addOnSuccessListener { document ->
+                                for (doc in document){
+                                    if(doc.id==inspeccion){
+                                        textoestado.text = "Información Diligenciada!!"
+                                        btn_estado.visibility = View.INVISIBLE
+                                    }
+                                }
+
+                                if(textoestado.text==""){
+                                    textoestado.text="Pendiente por diligenciar"
+                                    btn_estado.visibility=View.VISIBLE
+                                }
+                            }
+                            .addOnFailureListener { exception ->
+                                textoestado.text="Pendiente por diligenciar"
+                                btn_estado.visibility=View.VISIBLE
+                            }
                     }
+
                 }
                 if(texto!=""){
                     btn_estado.visibility = View.VISIBLE
                     imagen.setImageResource(R.drawable.vehiculo)
                 }else{
                     btn_estado.visibility = View.INVISIBLE
-                    texto="Sin vehiculo asociado $inspeccion"
+                    textoestado.text=""
+                    texto="Sin vehiculo asociado "
                     imagen.setImageResource(R.drawable.noencontrado)
                 }
                 mensaje.text="$texto"
