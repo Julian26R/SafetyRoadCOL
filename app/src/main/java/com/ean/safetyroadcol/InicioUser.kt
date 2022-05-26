@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -30,8 +31,8 @@ class InicioUser : AppCompatActivity() {
         val imagen=findViewById<ImageView>(R.id.im_user_user)
         val mensaje=findViewById<TextView>(R.id.tv_asignado_user)
             var texto=""
-
-        val boton_cerrarsesion = findViewById<Button>(R.id.brn_volver_user)
+        val progress=findViewById<ProgressBar>(R.id.progressBar_user)
+        val boton_cerrarsesion = findViewById<Button>(R.id.btn_cerrar_user)
         boton_cerrarsesion.setOnClickListener{
             auth.signOut()
             if (auth.currentUser==null){
@@ -53,11 +54,11 @@ class InicioUser : AppCompatActivity() {
                 }
                 if(texto!=""){
                     btn_estado.visibility = View.VISIBLE
-                    imagen.setImageResource(R.drawable.logo)
+                    imagen.setImageResource(R.drawable.vehiculo)
                 }else{
                     btn_estado.visibility = View.INVISIBLE
                     texto="Sin vehiculo asociado"
-                    imagen.setImageResource(R.drawable.ic_launcher_background)
+                    imagen.setImageResource(R.drawable.noencontrado)
                 }
                 mensaje.text="$texto"
 
@@ -65,5 +66,14 @@ class InicioUser : AppCompatActivity() {
             .addOnFailureListener { exception ->
                 Log.d(ContentValues.TAG, "get failed with ", exception)
             }
+        val boton_cerrar_sesion=findViewById<Button>(R.id.btn_cerrar_user)
+        boton_cerrar_sesion.setOnClickListener{
+            progress.visibility=View.VISIBLE
+            auth.signOut()//cierra sesion
+            val intent= Intent(this,MainActivity::class.java)
+            progress.visibility=View.INVISIBLE
+            startActivity(intent)
+        }
     }
+
 }

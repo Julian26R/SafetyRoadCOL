@@ -5,8 +5,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -20,9 +22,16 @@ class Login : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         auth = Firebase.auth
         val db = Firebase.firestore
+        if(auth.currentUser!=null) {
+            val intent= Intent(this,MainActivity::class.java)
+            startActivity(intent)
+        }
+
+
         val txt_correo=findViewById<EditText>(R.id.ed_usuario_log)
         val txt_contrasena=findViewById<EditText>(R.id.et_contrasena_log)
         val boton_inicio_sesion=findViewById<Button>(R.id.btn_login_log)
+        val progress=findViewById<ProgressBar>(R.id.progressBar_log)
         boton_inicio_sesion.setOnClickListener {
             try {
                 val correo=txt_correo.text.toString().lowercase()
@@ -33,7 +42,7 @@ class Login : AppCompatActivity() {
                     auth.signInWithEmailAndPassword(correo,contraseña)
                         .addOnCompleteListener(this) { task ->
                             if (task.isSuccessful) {
-                                Toast.makeText(baseContext, "Bienvenido", Toast.LENGTH_SHORT).show()
+                                progress.visibility= View.VISIBLE
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d(ContentValues.TAG, "signInWithCustomToken:success")
                                 val docRef = db.collection("Usuario").document(correo)
@@ -43,12 +52,15 @@ class Login : AppCompatActivity() {
                                             val data=document.data
                                             val usuario= document.get("correo")
                                             val perfil= document.get("perfil")
+                                            Toast.makeText(baseContext, "Bienvenido", Toast.LENGTH_SHORT).show()
                                             if(perfil=="admin"){
+                                                progress.visibility= View.INVISIBLE
                                                 val intent= Intent(this,InicioAdmin::class.java)
                                                 intent.putExtra("USUARIO","$usuario")
                                                 intent.putExtra("PERFIL","$perfil")
                                                 startActivity(intent)
                                             }else{
+                                                progress.visibility= View.INVISIBLE
                                                 val intent= Intent(this,InicioUser::class.java)
                                                 intent.putExtra("USUARIO","$usuario")
                                                 intent.putExtra("PERFIL","$perfil")
