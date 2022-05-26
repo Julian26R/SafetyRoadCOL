@@ -37,14 +37,6 @@
                 android:text="LOGIN"
                 android:textColor="#000000" />
 
-            <Button
-                android:id="@+id/BtnRegister"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="#0B5EC3"
-                android:text="Register"
-                android:textColor="#090909" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

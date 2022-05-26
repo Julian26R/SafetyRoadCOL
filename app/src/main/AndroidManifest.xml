@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SafetyRoadCOL">
         <activity
+            android:name=".RegistrarUsuario"
+            android:exported="false" />
+        <activity
             android:name=".InicioUser"
             android:exported="false" />
         <activity
