@@ -240,7 +240,7 @@ Se logró el desarrollo de la aplicación movil para la seguridad vial de emplea
 cumpliendo con los requisitos funcionales y no funcionales propuestos.
 
 
-# CONCLUSION
+# CONCLUSIÓN
 
 El desarrollo de la aplicación movil utilizando Kotlin, Android Studio Y Firebase permitió un prototipado veloz y una fácil implementación, 
 esto segun los requerimientos solicitados por el usuario final.
