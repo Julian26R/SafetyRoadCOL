@@ -225,15 +225,19 @@ ninguno se ha consolidado en tener una aplicación que sea amigable y confiable 
    Kotlin es un lenguaje de programación de tipado estático que corre sobre la máquina virtual de Java
    y que también puede ser compilado a código fuente de JavaScript.
    
+   ![kotlin-java-mejor](https://user-images.githubusercontent.com/98990742/171299359-b650a707-fee3-4a1f-8713-b78580aef010.png)
+
 2. Android Studio
    Android Studio es el entorno de desarrollo integrado oficial para la plataforma Android. 
    Fue anunciado el 16 de mayo de 2013 en la conferencia Google I/O, 
    y reemplazó a Eclipse como el IDE oficial para el desarrollo de aplicaciones para Android. 
-3. Firebase
-   Firebase de Google es una plataforma en la nube para el desarrollo de aplicaciones web y móvil. 
+   
+   ![Android_Studio_Trademark svg](https://user-images.githubusercontent.com/98990742/171299441-b40da8e9-2011-4ec4-adab-133367270076.png)
+
+3. Firebase de Google es una plataforma en la nube para el desarrollo de aplicaciones web y móvil. 
    Está disponible para distintas plataformas (iOS, Android y web), con lo que es más rápido trabajar en el desarrollo.
-   
-   
+   ![Firebase_Logo](https://user-images.githubusercontent.com/98990742/171299487-7053ea7a-26bd-4310-8d61-49b41234a76a.png)
+
 # RESULTADOS
 
 Se logró el desarrollo de la aplicación movil para la seguridad vial de empleados que cuentan con un vehiculo empresarial, 
