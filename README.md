@@ -221,7 +221,7 @@ ninguno se ha consolidado en tener una aplicación que sea amigable y confiable 
 
 # HERRAMIENTAS UTILIZADAS
 
-1. Kotlin
+1. 
    Kotlin es un lenguaje de programación de tipado estático que corre sobre la máquina virtual de Java
    y que también puede ser compilado a código fuente de JavaScript.
    
