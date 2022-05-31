@@ -45,7 +45,7 @@ class AsignarVehiculo : AppCompatActivity() {
                                 val tipo = document.get("tipo")
                                 val cilindraje = document.get("cilindraje")
                                 val asignado = document.get("asignadoA")
-                                if(asignado == Correo || asignado!= Correo && asignado != null){
+                                if(asignado == Correo || asignado != Correo && asignado != ""){
                                     Toast.makeText(baseContext, "vehiculo asignado a : $asignado", Toast.LENGTH_SHORT).show()
                                 }else{
                                     val asignadoa = hashMapOf(

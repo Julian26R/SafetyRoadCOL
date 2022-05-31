@@ -27,7 +27,7 @@ class LeerLibro : AppCompatActivity() {
             pdf.fromBytes(it).load()
             proceesbar.visibility= View.INVISIBLE
         }.addOnFailureListener{
-            Toast.makeText(this,"No se puede descargar",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"No se puedo descargar el soat: $nombre_libro",Toast.LENGTH_SHORT).show()
         }
     }
 }
