@@ -1,6 +1,7 @@
 # SafetyRoadCOL
 DISEÑO Y DESARROLLO DE UNA APLICACIÓN MOVIL PARA LA VINCULACIÓN DE VEHICULOS Y USUARIOS
 
+![WhatsApp Image 2022-05-24 at 6 56 55 PM](https://user-images.githubusercontent.com/98990742/171300001-1ae00126-2850-42a8-b582-d9afa4f9dbc1.jpeg)
 
 
 - Juan Camilo Flores Pana
