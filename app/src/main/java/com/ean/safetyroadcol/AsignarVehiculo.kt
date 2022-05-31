@@ -32,6 +32,7 @@ class AsignarVehiculo : AppCompatActivity() {
                 if(Placa.isEmpty() || Correo.isEmpty()){
                     throw Exception ("Placa y Correo no pueden estar vacios")
                 }else{
+
                     val docRef = db.collection("Vehiculo").document(Placa)
                     docRef.get()
                         .addOnSuccessListener { document ->
@@ -43,10 +44,9 @@ class AsignarVehiculo : AppCompatActivity() {
                                 val linea = document.get("linea")
                                 val tipo = document.get("tipo")
                                 val cilindraje = document.get("cilindraje")
-                                val asignadoa = document.get("asignadoA")
-
-                                if(asignadoa == Correo || asignadoa!= Correo){
-                                    Toast.makeText(baseContext, "vehiculo asignado a : $asignadoa", Toast.LENGTH_SHORT).show()
+                                val asignado = document.get("asignadoA")
+                                if(asignado == Correo || asignado!= Correo && asignado != null){
+                                    Toast.makeText(baseContext, "vehiculo asignado a : $asignado", Toast.LENGTH_SHORT).show()
                                 }else{
                                     val asignadoa = hashMapOf(
                                         "asignadoA" to "$Correo",
@@ -65,8 +65,8 @@ class AsignarVehiculo : AppCompatActivity() {
                                         Toast.LENGTH_SHORT).show()
                                 }
 
-                            }else{
-                                Log.d(ContentValues.TAG, "El vehiculo no existen!")
+                            }else {
+                                Log.d(ContentValues.TAG, "El vehiculo no existe!")
                             }
 
                         }

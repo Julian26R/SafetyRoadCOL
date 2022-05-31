@@ -35,8 +35,8 @@ class InicioUser : AppCompatActivity() {
         val boton_cerrar_sesion=findViewById<Button>(R.id.btn_cerrar_user)
         val sdf = SimpleDateFormat("ddMMyyyy")
         val currentDate = sdf.format(Date())
-        val inspeccion="${usuario}_$currentDate"
-        val btn_informacion=findViewById<Button>(R.id.btn_informacion_user)
+    val inspeccion="${usuario}_$currentDate"
+
         boton_cerrar_sesion.setOnClickListener{
             progress.visibility=View.VISIBLE
             auth.signOut()//cierra sesion
@@ -50,24 +50,15 @@ class InicioUser : AppCompatActivity() {
             .addOnSuccessListener { documentos ->
                 for (document in documentos){
                     val placa=document.id
-
+                    btn_estado.setOnClickListener {
+                        val intent= Intent(this,RegistroInspeccion::class.java)
+                        intent.putExtra("PLACA","$placa")
+                        intent.putExtra("USUARIO","$usuario")
+                        startActivity(intent)
+                    }
                     val asignadoA=document.get("asignadoA")
                     val fechaAsignacion=document.get("fechaAsignacion")
                     if(asignadoA==usuario){
-                        btn_estado.setOnClickListener {
-                            val intent= Intent(this,RegistroInspeccion::class.java)
-                            intent.putExtra("PLACA","$placa")
-                            intent.putExtra("USUARIO","$usuario")
-                            intent.putExtra("PERFIL","$perfil")
-                            startActivity(intent)
-                        }
-                        btn_informacion.setOnClickListener {
-                            val intent= Intent(this,InfoVehiculo::class.java)
-                            intent.putExtra("PLACA","$placa")
-                            intent.putExtra("USUARIO","$usuario")
-                            intent.putExtra("PERFIL","$perfil")
-                            startActivity(intent)
-                        }
                         texto="Asignado el vehiculo $placa "
                         val docRef1 = db.collection("Inspeccion")
                         docRef1.get()
@@ -106,7 +97,6 @@ class InicioUser : AppCompatActivity() {
             .addOnFailureListener { exception ->
                 Log.d(ContentValues.TAG, "get failed with ", exception)
             }
-
 
     }
 
