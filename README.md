@@ -3,7 +3,7 @@ DISEÑO Y DESARROLLO DE UNA APLICACIÓN MOVIL PARA LA VINCULACIÓN DE VEHICULOS 
 
 
 
-- Juan Camilo Flores 
+- Juan Camilo Flores Pana
 - Julian David Rodriguez Martinez
 - Facultad de ingenieria
 - Estructura de Datos
