@@ -11,6 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -19,6 +20,7 @@ class InicioUser : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         val db = Firebase.firestore
+        var storage = Firebase.storage
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio_user)
 
@@ -30,7 +32,8 @@ class InicioUser : AppCompatActivity() {
         val textoestado=findViewById<TextView>(R.id.et_vistaestado_user)
         val imagen=findViewById<ImageView>(R.id.im_user_user)
         val mensaje=findViewById<TextView>(R.id.tv_asignado_user)
-            var texto=""
+        val im_soat = findViewById<ImageView>(R.id.imgsoat)
+        var texto=""
         val progress=findViewById<ProgressBar>(R.id.progressBar_user)
         val boton_cerrar_sesion=findViewById<Button>(R.id.btn_cerrar_user)
         val sdf = SimpleDateFormat("ddMMyyyy")
@@ -50,15 +53,23 @@ class InicioUser : AppCompatActivity() {
             .addOnSuccessListener { documentos ->
                 for (document in documentos){
                     val placa=document.id
-                    btn_estado.setOnClickListener {
-                        val intent= Intent(this,RegistroInspeccion::class.java)
-                        intent.putExtra("PLACA","$placa")
-                        intent.putExtra("USUARIO","$usuario")
-                        startActivity(intent)
-                    }
                     val asignadoA=document.get("asignadoA")
                     val fechaAsignacion=document.get("fechaAsignacion")
                     if(asignadoA==usuario){
+                        btn_estado.setOnClickListener {
+                            val intent= Intent(this,RegistroInspeccion::class.java)
+                            intent.putExtra("PLACA","$placa")
+                            intent.putExtra("USUARIO","$usuario")
+                            startActivity(intent)
+                        }
+                        im_soat.setOnClickListener{
+                            val soat_pdf = "$placa.pdf"
+                            val intent = Intent(this,LeerLibro::class.java)
+                            Toast.makeText(this,"$soat_pdf",Toast.LENGTH_SHORT).show()
+                            intent.putExtra("TITULO LIBRO", "$soat_pdf")//enviando el nombre del libro a leer libro
+                            //enviar datos extra
+                            startActivity(intent)
+                        }
                         texto="Asignado el vehiculo $placa "
                         val docRef1 = db.collection("Inspeccion")
                         docRef1.get()
@@ -84,9 +95,11 @@ class InicioUser : AppCompatActivity() {
                 }
                 if(texto!=""){
                     btn_estado.visibility = View.VISIBLE
+                    im_soat.visibility=View.VISIBLE
                     imagen.setImageResource(R.drawable.vehiculo)
                 }else{
                     btn_estado.visibility = View.INVISIBLE
+                    im_soat.visibility = View.INVISIBLE
                     textoestado.text=""
                     texto="Sin vehiculo asociado "
                     imagen.setImageResource(R.drawable.noencontrado)

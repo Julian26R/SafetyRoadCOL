@@ -52,6 +52,13 @@
             android:layout_height="wrap_content"
             android:text="Informar Estado" />
 
+        <ImageView
+            android:id="@+id/imgsoat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/proteger" />
+
     </LinearLayout>
 
     <LinearLayout
