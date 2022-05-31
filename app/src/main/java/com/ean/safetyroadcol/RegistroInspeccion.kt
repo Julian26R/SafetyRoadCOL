@@ -22,28 +22,28 @@ class RegistroInspeccion : AppCompatActivity() {
         val eluces = listOf("Buen estado","Mal estado","Como se recibio","N/A")
         val adluces = ArrayAdapter(this,android.R.layout.simple_spinner_item,eluces)
         spluces.adapter = adluces
-        val opluces = spluces.selectedItemPosition
+
 
         //lista espejo
         val spespejo = findViewById<Spinner>(R.id.sp_espejos_ins)
         val eespejo = listOf("Buen estado","Mal estado","Como se recibio","N/A")
         val adespejo = ArrayAdapter(this,android.R.layout.simple_spinner_item,eespejo )
         spespejo.adapter = adespejo
-        val opespejo = spespejo.selectedItemPosition
+
 
         //lista abolla
         val spabolla = findViewById<Spinner>(R.id.sp_abolla_ins)
         val eabolla = listOf("Buen estado","Mal estado","Como se recibio","N/A")
         val adabolla = ArrayAdapter(this,android.R.layout.simple_spinner_item,eabolla)
         spabolla.adapter = adabolla
-        val opabolla = spabolla.selectedItemPosition
+
 
         //lista llantas
         val spllantas = findViewById<Spinner>(R.id.sp_llantas_ins)
         val ellantas = listOf("Buen estado","Mal estado","Como se recibio","N/A")
         val adllantas = ArrayAdapter(this,android.R.layout.simple_spinner_item,ellantas)
         spllantas.adapter = adllantas
-        val opllantas = spllantas.selectedItemPosition
+
 
 
         val placa: String = intent.getStringExtra("PLACA").toString().uppercase()
@@ -73,24 +73,28 @@ class RegistroInspeccion : AppCompatActivity() {
                     val sdf = SimpleDateFormat("ddMMyyyy")
                     val currentDate = sdf.format(Date())
                     val inspeccion="${usuario}_$currentDate"
+                    val opespejo = spespejo.selectedItemPosition
                     val tespejo:String = when{
                         opespejo == 0 -> "Buen estado"
                         opespejo == 1 -> "Mal estado"
                         opespejo == 2 -> "Como se recibio"
                         else -> "N/A"
                     }
+                    val opluces = spluces.selectedItemPosition
                     val tluces:String = when{
                         opluces == 0 -> "Buen estado"
                         opluces == 1 -> "Mal estado"
                         opluces == 2 -> "Como se recibio"
                         else -> "N/A"
                     }
+                    val opabolla = spabolla.selectedItemPosition
                     val tabolla:String = when{
                         opabolla == 0 -> "Buen estado"
                         opabolla == 1 -> "Mal estado"
                         opabolla == 1 -> "Como se recibio"
                         else -> "N/A"
                     }
+                    val opllantas = spllantas.selectedItemPosition
                     val tllantas:String = when{
                         opllantas == 0 -> "Buen estado"
                         opllantas == 1 -> "Mal estado"
