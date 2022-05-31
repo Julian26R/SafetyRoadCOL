@@ -32,24 +32,23 @@ class RegistrarVehiculo : AppCompatActivity() {
         val elementos = listOf("Auto Movil","Motocicleta")
         val adaptador = ArrayAdapter(this,android.R.layout.simple_spinner_item,elementos)
         spinner.adapter = adaptador
-        val opcion = spinner.selectedItemPosition
-
         val TxtCilindrje = findViewById<EditText>(R.id.EdTxtCilindraje)
         val boton_registrarvehiculo = findViewById<Button>(R.id.BtnRegistrarVehiculoNuevo)
         boton_registrarvehiculo.setOnClickListener {
             try{
+                val opcion = spinner.selectedItemPosition
                 val Placa = TxtPlaca.text.toString()
                 val Marca = TxtMarca.text.toString()
                 val Modelo = TxtModelo.text.toString()
                 val Color = TxtColor.text.toString()
                 val Linea = TxtLinea.text.toString()
-                val tipo:String = when{
-                    opcion == 0 -> "Auto Movil"
-                    opcion == 1 -> "Motocicleta"
-                    else -> "error"
-                }
                 val Cilindraje = TxtCilindrje.text.toString()
-                if(Placa.isEmpty() || Marca.isEmpty() || Modelo.isEmpty() || Color.isEmpty() || Linea.isEmpty() || tipo.isEmpty()){
+                val tipovehiculo:String
+                when(opcion){
+                    0->tipovehiculo = "Auto Movil"
+                    else-> tipovehiculo = "Motocicleta"
+                }
+                if(Placa.isEmpty() || Marca.isEmpty() || Modelo.isEmpty() || Color.isEmpty() || Linea.isEmpty()){
                     throw Exception ("Placa, Marca, Modelo, Color,Linea y Tipo no pueden estar vacios")
                 }else{
                     val vehiculo = hashMapOf(
@@ -58,8 +57,9 @@ class RegistrarVehiculo : AppCompatActivity() {
                         "modelo" to "$Modelo",
                         "color" to "$Color",
                         "linea" to "$Linea",
-                        "tipo" to "$tipo",
-                        "cilindraje" to "$Cilindraje"
+                        "tipo" to "$tipovehiculo",
+                        "cilindraje" to "$Cilindraje",
+                        "asignadoA" to ""
                     )
 
                     val docRef = db.collection("Vehiculo").document(Placa)

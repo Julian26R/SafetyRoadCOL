@@ -28,40 +28,50 @@ class AsignarVehiculo : AppCompatActivity() {
         boton_registra.setOnClickListener {
             try {
                 val Placa = Txt_Placa.text.toString()
-                val Correo = Txt_Correo.text.toString()
+                val Correo = Txt_Correo.text.toString().lowercase()
                 if(Placa.isEmpty() || Correo.isEmpty()){
                     throw Exception ("Placa y Correo no pueden estar vacios")
                 }else{
                     val docRef = db.collection("Vehiculo").document(Placa)
                     docRef.get()
                         .addOnSuccessListener { document ->
-                            val data=document.data
-                            val placa= document.get("placa")
-                            val marca= document.get("marca")
-                            val modelo = document.get("modelo")
-                            val color = document.get("color")
-                            val linea = document.get("linea")
-                            val tipo = document.get("tipo")
-                            val cilindraje = document.get("cilindraje")
-                            val asignadoa = hashMapOf(
-                                "asignadoA" to "$Correo",
-                                "placa" to "$placa",
-                                "marca" to "$marca",
-                                "modelo" to "$modelo",
-                                "color" to "$color",
-                                "linea" to "$linea",
-                                "tipo" to "$tipo",
-                                "cilindraje" to "$cilindraje"
-                            )
-                            docRef.set(asignadoa)
-                            Log.d(ContentValues.TAG, "Se registro el vehiculo con la placa : $Correo")
-                            val intent = Intent(this,InicioAdmin::class.java)
-                            startActivity(intent)
-                            Toast.makeText(baseContext, "Se asigno el vehiculo con la placa $Placa a : $Correo",
-                                Toast.LENGTH_SHORT).show()
+                            if (document != null) {
+                                val placa= document.get("placa")
+                                val marca= document.get("marca")
+                                val modelo = document.get("modelo")
+                                val color = document.get("color")
+                                val linea = document.get("linea")
+                                val tipo = document.get("tipo")
+                                val cilindraje = document.get("cilindraje")
+                                val asignadoa = document.get("asignadoA")
+
+                                if(asignadoa == Correo || asignadoa!= Correo){
+                                    Toast.makeText(baseContext, "vehiculo asignado a : $asignadoa", Toast.LENGTH_SHORT).show()
+                                }else{
+                                    val asignadoa = hashMapOf(
+                                        "asignadoA" to "$Correo",
+                                        "placa" to "$placa",
+                                        "marca" to "$marca",
+                                        "modelo" to "$modelo",
+                                        "color" to "$color",
+                                        "linea" to "$linea",
+                                        "tipo" to "$tipo",
+                                        "cilindraje" to "$cilindraje"
+                                    )
+                                    docRef.set(asignadoa)
+                                    val intent = Intent(this,InicioAdmin::class.java)
+                                    startActivity(intent)
+                                    Toast.makeText(baseContext, "Se asigno el vehiculo con la placa $Placa a : $Correo",
+                                        Toast.LENGTH_SHORT).show()
+                                }
+
+                            }else{
+                                Log.d(ContentValues.TAG, "El vehiculo no existen!")
+                            }
+
                         }
                         .addOnFailureListener { e ->
-                            Log.w(ContentValues.TAG, "Error adding document", e)
+                            Log.d(ContentValues.TAG, "Error adding document", e)
                         }
                 }
 
