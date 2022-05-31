@@ -33,16 +33,18 @@ class Login : AppCompatActivity() {
         val boton_inicio_sesion=findViewById<Button>(R.id.btn_login_log)
         val progress=findViewById<ProgressBar>(R.id.progressBar_log)
         boton_inicio_sesion.setOnClickListener {
+            progress.visibility= View.VISIBLE
             try {
                 val correo=txt_correo.text.toString().lowercase()
                 val contraseña=txt_contrasena.text.toString()
                 if(correo.isEmpty()||contraseña.isEmpty()){
+                    progress.visibility= View.INVISIBLE
                     throw Exception("Los campos no pueden estar vacios")
                 }else{
                     auth.signInWithEmailAndPassword(correo,contraseña)
                         .addOnCompleteListener(this) { task ->
                             if (task.isSuccessful) {
-                                progress.visibility= View.VISIBLE
+
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d(ContentValues.TAG, "signInWithCustomToken:success")
                                 val docRef = db.collection("Usuario").document(correo)
@@ -68,11 +70,13 @@ class Login : AppCompatActivity() {
                                             }
                                             Log.d(ContentValues.TAG, "DocumentSnapshot data: ${data}")
                                         } else {
+                                            progress.visibility= View.INVISIBLE
                                             Log.d(ContentValues.TAG, "No such document")
                                         }
                                     }
                                     .addOnFailureListener { exception ->
                                         Log.d(ContentValues.TAG, "get failed with ", exception)
+                                        progress.visibility= View.INVISIBLE
                                     }
 
                             } else {

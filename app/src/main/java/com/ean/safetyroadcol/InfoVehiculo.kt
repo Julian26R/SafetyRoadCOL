@@ -5,24 +5,25 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
+//
+// import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import com.google.firebase.auth.FirebaseAuth
+//import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import java.lang.Exception
 
 class InfoVehiculo : AppCompatActivity() {
-    private lateinit var storage: FirebaseStorage;
+    //private lateinit var storage: FirebaseStorage;
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info_vehiculo)
         val db = Firebase.firestore
-        var storageRef = storage.reference
+        //var storageRef = storage.reference
         val usuario:String = intent.getStringExtra("USUARIO").toString()
         val perfil:String = intent.getStringExtra("PERFIL").toString()
         val placa:String = intent.getStringExtra("PLACA").toString()
@@ -41,6 +42,12 @@ class InfoVehiculo : AppCompatActivity() {
         val tv_marca=findViewById<TextView>(R.id.tv_marca_info)
         val tv_modelo=findViewById<TextView>(R.id.tv_modelo_info)
         val tv_tipo=findViewById<TextView>(R.id.tv_tipo_info)
+        /*try{
+            val pathr=storageRef.child("vehiculo/AAA-111.png")
+        }
+        catch (e:Exception){
+
+        }*/
         try {
             val docRef = db.collection("Vehiculo").document(placa)
                 .get()
@@ -65,29 +72,8 @@ class InfoVehiculo : AppCompatActivity() {
                 }
                 .addOnFailureListener { exception ->
                     Log.d(ContentValues.TAG, "get failed with ", exception)
-                    Toast.makeText(this, "get failed with ${exception.message}",
-                        Toast.LENGTH_SHORT).show()
-                }
-            // Create a reference with an initial file path and name
-            val pathReference = storageRef.child("images/AAA-111.png")
-            val listRef = storage.reference.child("files/uid")
 
-// You'll need to import com.google.firebase.storage.ktx.component1 and
-// com.google.firebase.storage.ktx.component2
-            /*listRef.listAll()
-                .addOnSuccessListener { (items, prefixes) ->
-                    prefixes.forEach { prefix ->
-                        // All the prefixes under listRef.
-                        // You may call listAll() recursively on them.
-                    }
-
-                    items.forEach { item ->
-                        // All the items under listRef.
-                    }
                 }
-                .addOnFailureListener {
-                    // Uh-oh, an error occurred!
-                }*/
 
         }catch(e:Exception){
             Toast.makeText(this, e.message,
