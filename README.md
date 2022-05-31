@@ -220,6 +220,12 @@ ninguno se ha consolidado en tener una aplicación que sea amigable y confiable 
     </tr>
 </table>
 
+# MOCKUPS
+
+![WhatsApp Image 2022-05-31 at 11 05 32 AM](https://user-images.githubusercontent.com/98990742/171300929-755462e2-9119-4ff4-ad0a-e4981a29dab6.jpeg)
+
+![WhatsApp Image 2022-05-31 at 11 05 52 AM](https://user-images.githubusercontent.com/98990742/171300932-4e5c29a5-28f9-4ef3-8723-81de1001a34f.jpeg)
+
 # HERRAMIENTAS UTILIZADAS
 
 1. 
